@@ -5,6 +5,39 @@
     Date: 19/12/2016
     Title: PythonLispExpresionInterpreter
     Comment: This module solve Lisp Expresion giving the expresion as string and the values as dict "key": true|false
+
+    Example usage:
+    Python 3.5.2 (default, Nov 17 2016, 17:05:23)
+    [GCC 5.4.0 20160609] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> from plei import Plei
+    >>> expresionS = "(OR (NOT VAL1) (AND VAL1 VAL2) )"
+    >>> operandos = { "VAL1" : True, "VAL2" : False }
+    >>> a = Plei( expresionS, operandos )
+    Expresion: (OR (NOT VAL1) (AND VAL1 VAL2) )
+    Operandos:
+    {'VAL1': True, 'VAL2': False}
+    Solucion:
+    ----------------------------------------------------------
+    ['OR', 'NOT']
+    VAL1
+    NOT
+    Operando el NOT sobre VAL1
+    VAL1 vale True
+    ['OR', False, 'AND', 'VAL1']
+    VAL2
+    VAL1
+    AND
+    Operando el AND sobre VAL1 y VAL2
+    VAL1 vale True
+    VAL2 vale False
+    ['OR', False, False]
+    False
+    False
+    OR
+    Operando el OR sobre False y False
+    ----------------------------------------------------------
+    Resultado: False
 """
 import types
 
