@@ -13,7 +13,7 @@
     >>> from plei import Plei
     >>> expresionS = "(OR (NOT VAL1) (AND VAL1 VAL2) )"
     >>> operandos = { "VAL1" : True, "VAL2" : False }
-    >>> a = Plei( expresionS, operandos )
+    >>> a = Plei( expresionS, operandos, true )
     Expresion: (OR (NOT VAL1) (AND VAL1 VAL2) )
     Operandos:
     {'VAL1': True, 'VAL2': False}
@@ -64,7 +64,7 @@ class Plei:
     """
     pila = []
 
-    def __init__(self, lisp, valores, verbose=True ):
+    def __init__(self, lisp, valores, verbose=False ):
         """
             Constructor de la clase
             por defecto el verbose está activado asi que mostrará por pantalla informacion
@@ -187,8 +187,8 @@ class Plei:
                         self.pila.append(palabra)
                         #Se vacía la palabra
                         palabra = ""
-                    #Si no es un caracter de abrir parentesis, espacio o cerrar parentesis entonces es un caracter perteneciente
-                    #a una palabra
+                #Si no es un caracter de abrir parentesis, espacio o cerrar parentesis entonces es un caracter perteneciente
+                #a una palabra
                 elif caracter != "(" and caracter != " " and caracter != ")":
                     #concateno el caracter a la palabra
                     palabra += caracter
@@ -232,4 +232,4 @@ class Plei:
             else:
                 return None
         else:
-            self.log("La Expresión no puede estar vacía")
+            print("La Expresión no puede estar vacía")
